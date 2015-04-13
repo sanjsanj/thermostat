@@ -76,4 +76,25 @@ describe('thermostat', function() {
     });
   });
 
+  describe('Thermostat color is', function(){
+    it('green when temp is less than 18', function(){
+      for (var i = 0; i < 5; i++ ) {
+        thermostat.decrease();
+      };
+      expect(thermostat.color()).toBe('green');
+    });
+
+    it('yellow when temp is between 18 and 25', function(){
+      expect(thermostat.color()).toBe('yellow');
+    });
+
+    it('red when temp is more than 25', function(){
+      for (var i = 0; i < 10; i++ ) {
+        thermostat.increase();
+      };
+      expect(thermostat.color()).toBe('red');
+    });
+
+  });
+
 });

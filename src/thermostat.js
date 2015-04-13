@@ -27,3 +27,13 @@ Thermostat.prototype.psmodeToggle = function() {
 Thermostat.prototype.reset = function() {
   this.temp = 20;
 };
+
+Thermostat.prototype.color = function() {
+  if (this.temp < 18) {
+    return 'green';
+  };
+  if (this.temp < 25) {
+    return 'yellow';
+  };
+  return 'red';
+};
