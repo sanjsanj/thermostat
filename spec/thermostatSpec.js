@@ -42,6 +42,14 @@ describe('thermostat', function() {
     };
       expect(thermostat.temp).toBe(32);
     });
+
+    it('a maximum value of 25 with power saving mode', function(){
+    for (var i = 0; i < 20; i++ ) {
+      thermostat.increase();
+    };
+      expect(thermostat.temp).toBe(25);
+    });
+   
   });
 
   describe('The powersave mode can be', function(){
