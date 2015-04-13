@@ -9,17 +9,53 @@ describe('thermostat', function() {
   describe('A new thermostat has', function() {
 
     it('a default temp of 20', function() {
-      expect(thermostat.temp()).toBe(20);
+      expect(thermostat.temp).toBe(20);
     });
 
     it('a button to increase temp by one', function(){
       thermostat.increase();
-      expect(thermostat.temp()).toBe(21);
+      expect(thermostat.temp).toBe(21);
     });
 
     it('a button to decrease temp by one', function(){
+      expect(thermostat.temp).toBe(20);      
       thermostat.decrease();
-      expect(thermostat.temp()).toBe(19);
+      expect(thermostat.temp).toBe(19);
+    });
+
+    it('power saving mode on by default', function(){
+      expect(thermostat.psmode).toBe(true);
     });
   });
+
+  describe('The temperature has', function(){
+    it('a minimum value of 10', function(){
+    for (var i = 0; i < 20; i++ ) {
+      thermostat.decrease();
+    };
+      expect(thermostat.temp).toBe(10);
+    });
+
+    it('a maximum value of 32', function(){
+    for (var i = 0; i < 20; i++ ) {
+      thermostat.increase();
+    };
+      expect(thermostat.temp).toBe(32);
+    });
+  });
+
+  describe('The powersave mode can be', function(){
+    it('toggled off', function(){
+      thermostat.psmodeToggle();
+      expect(thermostat.psmode).toBe(false);
+    });
+
+    it('toggled off then on', function(){
+      thermostat.psmodeToggle();
+      expect(thermostat.psmode).toBe(false);
+      thermostat.psmodeToggle();
+      expect(thermostat.psmode).toBe(true);
+    });
+  });
+
 });
